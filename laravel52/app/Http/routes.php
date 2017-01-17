@@ -150,6 +150,15 @@ Route::group(['middleware' => ['web']], function () {
 
 
 
+//中间件功能测试相关路由
+//activity0宣传页面不用经过中间件activity验证处理
+Route::get('activity0', 'MiddlewareController@activity0');
+//只有宣传页面activity1，activity2才需要经过中间件验证处理
+Route::group(['middleware' => ['activity']], function () {
+    Route::get('activity1', 'MiddlewareController@activity1');
+    Route::get('activity2', 'MiddlewareController@activity2');
+});
+
 
 
 

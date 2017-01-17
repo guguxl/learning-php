@@ -41,6 +41,8 @@ class Kernel extends HttpKernel
      *
      * These middleware may be assigned to groups or used individually.
      *
+     * 在这里注册我们自己的中间件activity
+     *
      * @var array
      */
     protected $routeMiddleware = [
@@ -48,5 +50,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'activity' => \App\Http\Middleware\Activity::class,
     ];
 }
