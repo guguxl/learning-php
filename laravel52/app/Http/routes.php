@@ -135,6 +135,20 @@ Route::get('student/eloquent-model', 'StudentController@eloquentModelCurd');
 
 
 
+//测试request, response, session等相关web功能支持
+//将需要测试session功能的请求放在一个route组中，该组启用web中间件，该中间件将会启用session功能
+Route::group(['middleware' => ['web']], function () {
+    Route::get('web/request1', [
+        'as' => 'alias-request1',
+        'uses' => 'RequestController@request1'
+    ]);
+    Route::get('web/session1', 'RequestController@session1');
+    Route::get('web/session2', 'RequestController@session2');
+    Route::get('web/response1', 'RequestController@response1');
+});
+
+
+
 
 
 
